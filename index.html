@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poor Guy KOs Poison Needle! Saves Heiress! - Cinematic AI Short Film</title>
+  <meta name="description" content="High-retention vertical 9:16 cinematic short film experience. Modern Chinese billionaire action drama with AI video generation prompts, storyboard, synchronized sound effects, and production bible.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+  <!-- Top Navigation & Header -->
+  <header class="app-header">
+    <div class="logo-group">
+      <div class="logo-badge">9:16 4K</div>
+      <div class="title-meta">
+        <h1 class="main-title">Master John KOs Poison Needle! Saves Heiress Susan!</h1>
+        <span class="genre-tag">Master John (Hero) • Heiress Susan • Master Sam (Mastermind) | Action Romance</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="toggle-audio-btn" class="btn btn-secondary" title="Toggle Cinematic WebAudio SFX Engine">
+        <span class="icon">🔊</span> <span id="audio-btn-text">Audio: ON</span>
+      </button>
+      <button id="director-mode-btn" class="btn btn-secondary" title="Toggle Camera & Director Overlay">
+        <span class="icon">🎬</span> <span>Director Mode</span>
+      </button>
+      <button id="export-package-btn" class="btn btn-primary" title="View Full Production Bible & Prompts">
+        <span class="icon">📋</span> <span>AI Prompts Deck</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-layout">
+    <!-- Left Column: 9:16 Cinematic Theater -->
+    <section class="player-column">
+      <div class="phone-frame-wrapper">
+        <div class="phone-frame">
+          <div class="phone-speaker"></div>
+          
+          <!-- Cinema Viewport 9:16 -->
+          <div class="cinema-viewport" id="viewport">
+            <!-- Dynamic Ken Burns Image Stage -->
+            <div class="visual-stage" id="visual-stage">
+              <img id="current-frame" src="assets/scene1_the_setup.jpg" alt="Cinematic Scene Keyframe" class="active-slide anim-kenburns-1">
+              <div class="cinematic-vignette"></div>
+              <div class="cinematic-grading"></div>
+              <div class="action-flash" id="action-flash"></div>
+            </div>
+
+            <!-- Director Overlay (Toggleable) -->
+            <div class="director-hud" id="director-hud">
+              <div class="hud-top">
+                <span class="hud-rec"><span class="rec-dot"></span> REC 24.00 FPS</span>
+                <span class="hud-iso" id="hud-lens">35mm T1.5 • ISO 800</span>
+                <span class="hud-aspect">9:16 DCI 4K</span>
+              </div>
+              <div class="hud-crosshair">
+                <div class="ch-line horizontal"></div>
+                <div class="ch-line vertical"></div>
+                <div class="ch-box"></div>
+              </div>
+              <div class="hud-bottom">
+                <div class="hud-cam-move" id="hud-cam-move">CAMERA: Steady tracking pan forward</div>
+                <div class="hud-lighting" id="hud-lighting">LIGHTING: High-contrast hotel chandelier warm rim</div>
+              </div>
+            </div>
+
+            <!-- TikTok/Shorts UI Overlay (Toggleable) -->
+            <div class="social-overlay">
+              <div class="social-side-rail">
+                <div class="social-action">
+                  <div class="action-icon">❤️</div>
+                  <span class="action-count">248.5K</span>
+                </div>
+                <div class="social-action">
+                  <div class="action-icon">💬</div>
+                  <span class="action-count">14.2K</span>
+                </div>
+                <div class="social-action">
+                  <div class="action-icon">🔖</div>
+                  <span class="action-count">89.1K</span>
+                </div>
+                <div class="social-action">
+                  <div class="action-icon">↗️</div>
+                  <span class="action-count">56.4K</span>
+                </div>
+                <div class="social-vinyl rotating">
+                  <span>🎵</span>
+                </div>
+              </div>
+              
+              <!-- Subtitles & Caption Box -->
+              <div class="subtitles-container">
+                <div class="character-badge" id="speaker-badge">LOBBY • HOTEL RECEPTION</div>
+                <div class="subtitle-text" id="subtitle-en">Heiress Lin walks through the hotel lobby under high-security guard...</div>
+                <div class="subtitle-cn" id="subtitle-cn">林氏千金在重重保镖护卫下步入五星酒店大堂...</div>
+              </div>
+            </div>
+
+            <!-- Big Play/Pause Splash Icon -->
+            <div class="play-overlay-trigger" id="play-overlay-trigger">
+              <div class="play-icon-circle">▶</div>
+            </div>
+          </div>
+
+          <!-- Video Playback Control Deck -->
+          <div class="player-controls">
+            <!-- Timeline Progress Bar -->
+            <div class="scrub-container" id="scrub-container">
+              <div class="scrub-track">
+                <div class="scrub-progress" id="scrub-progress"></div>
+                <!-- Scene Cut Markers -->
+                <div class="scene-marker" style="left: 0%;" title="Scene 1 (0:00 - 0:06)"></div>
+                <div class="scene-marker" style="left: 12.5%;" title="Scene 2 (0:06 - 0:13)"></div>
+                <div class="scene-marker" style="left: 27%;" title="Scene 3 (0:13 - 0:21)"></div>
+                <div class="scene-marker" style="left: 43.7%;" title="Scene 4 (0:21 - 0:28)"></div>
+                <div class="scene-marker" style="left: 58.3%;" title="Scene 5 (0:28 - 0:36)"></div>
+                <div class="scene-marker" style="left: 75%;" title="Scene 6 (0:36 - 0:44)"></div>
+                <div class="scene-marker" style="left: 91.6%;" title="Scene 7 (0:44 - 0:50)"></div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="playback-buttons">
+                <button id="prev-btn" class="ctrl-btn" title="Previous Scene">⏮</button>
+                <button id="play-btn" class="ctrl-btn main-play-btn" title="Play / Pause Short Film">▶</button>
+                <button id="next-btn" class="ctrl-btn" title="Next Scene">⏭</button>
+                <button id="replay-btn" class="ctrl-btn" title="Restart">🔄</button>
+              </div>
+
+              <div class="time-display">
+                <span id="current-time">00:00</span> / <span id="total-time">00:48</span>
+              </div>
+
+              <div class="speed-toggle">
+                <button id="speed-btn" class="badge-btn">1.0x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Interactive Storyboard, Script Breakdown & AI Prompt Bible -->
+    <section class="details-column">
+      <!-- Tabs Header -->
+      <div class="tab-navigation">
+        <button class="tab-btn active" data-tab="tab-storyboard">
+          <span class="tab-icon">🎞️</span> Storyboard & Beats
+        </button>
+        <button class="tab-btn" data-tab="tab-narration">
+          <span class="tab-icon">🎙️</span> Full Narration (VO)
+        </button>
+        <button class="tab-btn" data-tab="tab-prompts">
+          <span class="tab-icon">✨</span> AI Video Prompts (Kling/Runway)
+        </button>
+        <button class="tab-btn" data-tab="tab-screenplay">
+          <span class="tab-icon">📜</span> Screenplay & Retention
+        </button>
+        <button class="tab-btn" data-tab="tab-sound">
+          <span class="tab-icon">🎧</span> Audio Design & SFX
+        </button>
+      </div>
+
+      <!-- Tab Content 1: Storyboard & Scene Breakdown -->
+      <div class="tab-pane active" id="tab-storyboard">
+        <div class="pane-header">
+          <h2>7-Act Storyboard & Shot Flow</h2>
+          <span class="pill-info">Click any scene card to jump & play</span>
+        </div>
+
+        <div class="scenes-grid" id="scenes-grid">
+          <!-- Scene cards injected dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Tab Content 2: AI Video Prompts Bible -->
+      <div class="tab-pane" id="tab-prompts">
+        <div class="pane-header">
+          <h2>Production-Ready AI Prompts</h2>
+          <span class="pill-info">Tested for Kling 1.5, Runway Gen-3 Alpha, Luma & Midjourney</span>
+        </div>
+        <div class="model-filter-bar">
+          <button class="filter-pill active" data-engine="all">All Engines</button>
+          <button class="filter-pill" data-engine="kling">Kling 1.5 (I2V)</button>
+          <button class="filter-pill" data-engine="runway">Runway Gen-3</button>
+          <button class="filter-pill" data-engine="luma">Luma Dream Machine</button>
+          <button class="filter-pill" data-engine="midjourney">Midjourney v6.1</button>
+        </div>
+        <div class="prompts-list" id="prompts-list">
+          <!-- Prompts dynamically loaded -->
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Full Screenplay & Viral Retention Blueprint -->
+      <div class="tab-pane" id="tab-screenplay">
+        <div class="pane-header">
+          <h2>Viral Retention Screenplay (48s)</h2>
+          <span class="pill-info">Target: 85%+ Completion Rate on TikTok/Shorts</span>
+        </div>
+        <div class="screenplay-container" id="screenplay-content">
+          <!-- Screenplay markup -->
+        </div>
+      </div>
+
+      <!-- Tab Content 4: Sound Design & Foley -->
+      <div class="tab-pane" id="tab-sound">
+        <div class="pane-header">
+          <h2>Sound Design & WebAudio Architecture</h2>
+          <span class="pill-info">Synthesized Cinematic SFX & Foley Cues</span>
+        </div>
+        <div class="sound-deck">
+          <div class="sound-card">
+            <div class="sfx-header">
+              <span class="sfx-title">Interactive Sound Board (Live Audition)</span>
+              <span class="sfx-tag">Web Audio API</span>
+            </div>
+            <p class="sfx-desc">Click to preview individual cinematic sound effects generated in real-time:</p>
+            <div class="sfx-buttons-grid">
+              <button class="sfx-btn" data-sfx="whoosh">💨 0.3s Whip Whoosh</button>
+              <button class="sfx-btn" data-sfx="heartbeat">💓 Suspense Heartbeat</button>
+              <button class="sfx-btn" data-sfx="needle">✨ Needle Silver Glint</button>
+              <button class="sfx-btn" data-sfx="punch">💥 Devastating KO Punch</button>
+              <button class="sfx-btn" data-sfx="slowmo">🌀 Slow-Motion Time Warp</button>
+              <button class="sfx-btn" data-sfx="romantic">🎻 Emotional Romance Pad</button>
+              <button class="sfx-btn" data-sfx="cliffhanger">⚡ Shocking Cliffhanger Sting</button>
+            </div>
+          </div>
+
+          <div class="music-timeline-box">
+            <h3>Cues & Stem Synchronization Chart</h3>
+            <table class="sfx-table">
+              <thead>
+                <tr>
+                  <th>Timecode</th>
+                  <th>Scene Beat</th>
+                  <th>SFX / Foley</th>
+                  <th>Musical Score Cue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>00:00 - 00:06</code></td>
+                  <td>The Setup (Heiress walks)</td>
+                  <td>Luxury heels clicking on marble, ambient hotel murmurs</td>
+                  <td>Low cello pulse, sub-bass drone, rising tension</td>
+                </tr>
+                <tr>
+                  <td><code>00:06 - 00:13</code></td>
+                  <td>The Attack (Needle intercept)</td>
+                  <td>High-pitch metallic glint, sudden wrist snap, fabric rustle</td>
+                  <td>Sudden drop to silence, accelerating heartbeat</td>
+                </tr>
+                <tr>
+                  <td><code>00:13 - 00:21</code></td>
+                  <td>The Fight & Knockout</td>
+                  <td>Whoosh dodge, clothing friction, 808 sub-drop KO jaw impact</td>
+                  <td>Aggressive percussion, distorted brass stab</td>
+                </tr>
+                <tr>
+                  <td><code>00:21 - 00:28</code></td>
+                  <td>Saving Heiress</td>
+                  <td>Catch rustle, heiress sharp gasp, cloth slide</td>
+                  <td>Lush romantic cello & violin swell, reverb tail</td>
+                </tr>
+                <tr>
+                  <td><code>00:28 - 00:36</code></td>
+                  <td>The Revelation</td>
+                  <td>Bodyguard takedown thuds, hero brushing dust off jacket</td>
+                  <td>Pensive piano notes, lingering emotional harmony</td>
+                </tr>
+                <tr>
+                  <td><code>00:36 - 00:44</code></td>
+                  <td>Shocking Offer</td>
+                  <td>Card snap, bodyguards collective gasp</td>
+                  <td>Rising orchestral tremolo, high-stakes strings</td>
+                </tr>
+                <tr>
+                  <td><code>00:44 - 00:48</code></td>
+                  <td>Cliffhanger</td>
+                  <td>Fateful hand extension whoosh, heartbeat stop</td>
+                  <td>Sudden massive orchestral hit, suspenseful cutoff</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 5: Complete Voiceover Narration -->
+      <div class="tab-pane" id="tab-narration">
+        <div class="pane-header">
+          <h2>Complete Voice-Over Narration & Dialogue</h2>
+          <span class="pill-info">Master John • Heiress Susan • Master Sam</span>
+        </div>
+        <div class="narration-container" id="narration-content">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Modal for Production Deck -->
+  <div class="modal-backdrop" id="deck-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Master Production Bible & Directing Package</h3>
+        <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast" id="toast">Prompt copied to clipboard!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
